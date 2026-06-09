@@ -148,20 +148,21 @@ $kritik_sayisi = $db->query("SELECT COUNT(*) FROM urunler WHERE stok_miktari <= 
     document.addEventListener("DOMContentLoaded", function() {
         var silmeModali = document.getElementById('silmeModali');
         
-        // Modal ekranda gösterilmeye başlandığında çalışır
-        silmeModali.addEventListener('show.bs.modal', function (event) {
-            // Modalı tetikleyen butonu yakala
-            var buton = event.relatedTarget;
-            
-            // Butonun içindeki data-urun-id değerini al
-            var urunId = buton.getAttribute('data-urun-id');
-            
-            // Modalın içindeki "Evet, Sil" butonunu bul
-            var modalSil Butonu = document.getElementById('modalSilButonu');
-            
-            // "Evet, Sil" butonunun linkini, yakaladığımız ID ile güncelle
-            modalSilButonu.href = 'urun_sil.php?id=' + urunId;
-        });
+        if (silmeModali) {
+            silmeModali.addEventListener('show.bs.modal', function (event) {
+                // Modalı tetikleyen butonu yakala
+                var buton = event.relatedTarget;
+                
+                // Butonun içindeki data-urun-id değerini al
+                var urunId = buton.getAttribute('data-urun-id');
+                
+                // Modalın içindeki "Evet, Sil" butonunu bul (BOŞLUK HATASI DÜZELTİLDİ)
+                var modalSilButonu = document.getElementById('modalSilButonu');
+                
+                // "Evet, Sil" butonunun linkini, yakaladığımız ID ile güncelle
+                modalSilButonu.href = 'urun_sil.php?id=' + urunId;
+            });
+        }
     });
 </script>
 
